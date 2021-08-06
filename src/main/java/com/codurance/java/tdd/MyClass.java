@@ -4,4 +4,8 @@ public class MyClass {
     public Integer getStuff() {
         return null;
     }
+
+    public String doStuff(String input) {
+        return null;
+    }
 }
