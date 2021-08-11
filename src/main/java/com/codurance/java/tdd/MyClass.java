@@ -5,7 +5,7 @@ public class MyClass {
         return null;
     }
 
-    public String doStuff(String input) {
+    public String doStuff(Integer input) {
         return null;
     }
 }

@@ -16,7 +16,7 @@ public class TestShould {
 
     @ParameterizedTest
     @CsvSource({"test, TEST", "tEST, TEST" })
-    void test_my_class_with_parameters(String input, String expected) {
+    void test_my_class_with_parameters(Integer input, String expected) {
         MyClass myClass = new MyClass();
         assertThat(myClass.doStuff(input)).isEqualTo(expected);
     }
