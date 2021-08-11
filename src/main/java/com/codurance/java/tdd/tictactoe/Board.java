@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 class Board {
 
+
+
     Player[][] board = {
             {Player.EMPTY, Player.EMPTY, Player.EMPTY},
             {Player.EMPTY, Player.EMPTY, Player.EMPTY},
             {Player.EMPTY, Player.EMPTY, Player.EMPTY}
     };
 
-    public void placePlay(Coordinate coordinate, Player player) throws AlreadyPlayedException {
+    public void placePlay(Coordinate coordinate, Player player) throws AlreadyPlayed {
         validMove(coordinate);
         board[coordinate.x][coordinate.y] = player;
     }
@@ -19,9 +21,9 @@ class Board {
         return board[coordinate.x][coordinate.y];
     }
 
-    public void validMove(Coordinate coordinate) throws AlreadyPlayedException {
+    public void validMove(Coordinate coordinate) throws AlreadyPlayed {
         if (!board[coordinate.x][coordinate.y].equals(Player.EMPTY))
-            throw new AlreadyPlayedException("Already played position");
+            throw new AlreadyPlayed("Already played position");
     }
 
     public boolean evaluateWinningByRow(Player player, int rowIndex) {

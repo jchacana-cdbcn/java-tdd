@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TicTacToeShould {
 
     @Test
-    void make_sure_X_goes_first() throws NotPlayersTurn, AlreadyPlayedException {
+    void make_sure_X_goes_first() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         Player player = game.play(new Coordinate(0, 0), Player.X);
         assertThat(player).isEqualTo(Player.X);
@@ -34,14 +34,14 @@ public class TicTacToeShould {
     }
 
     @Test
-    void make_sure_X_can_not_play_twice() throws NotPlayersTurn, AlreadyPlayedException {
+    void make_sure_X_can_not_play_twice() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         assertThrows(NotPlayersTurn.class, () -> game.play(new Coordinate(0, 0), Player.X));
     }
 
     @Test
-    void make_sure_O_can_go_second() throws NotPlayersTurn, AlreadyPlayedException {
+    void make_sure_O_can_go_second() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         Player player = game.play(new Coordinate(1, 0), Player.O);
@@ -49,7 +49,7 @@ public class TicTacToeShould {
     }
 
     @Test
-    void make_sure_X_is_third() throws NotPlayersTurn, AlreadyPlayedException {
+    void make_sure_X_is_third() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         game.play(new Coordinate(1, 0), Player.O);
@@ -58,7 +58,7 @@ public class TicTacToeShould {
     }
 
     @Test
-    void make_sure_O_is_fourth() throws NotPlayersTurn, AlreadyPlayedException {
+    void make_sure_O_is_fourth() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         game.play(new Coordinate(0, 1), Player.O);
@@ -68,14 +68,14 @@ public class TicTacToeShould {
     }
 
     @Test
-    void place_X_play_in_position_0_0() throws NotPlayersTurn, AlreadyPlayedException {
+    void place_X_play_in_position_0_0() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         assertThat(game.getSymbolAt(new Coordinate(0, 0))).isEqualTo(Player.X);
     }
 
     @Test
-    void place_O_play_in_position_1_0() throws NotPlayersTurn, AlreadyPlayedException {
+    void place_O_play_in_position_1_0() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         game.play(new Coordinate(1, 0), Player.O);
@@ -83,7 +83,7 @@ public class TicTacToeShould {
     }
 
     @Test
-    void place_X_play_in_position_1_1() throws NotPlayersTurn, AlreadyPlayedException {
+    void place_X_play_in_position_1_1() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         game.play(new Coordinate(1, 0), Player.O);
@@ -92,14 +92,14 @@ public class TicTacToeShould {
     }
 
     @Test
-    void throw_error_when_trying_to_play_in_a_played_position() throws NotPlayersTurn, AlreadyPlayedException {
+    void throw_error_when_trying_to_play_in_a_played_position() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
-        assertThrows(AlreadyPlayedException.class, () -> game.play(new Coordinate(0, 0), Player.O));
+        assertThrows(AlreadyPlayed.class, () -> game.play(new Coordinate(0, 0), Player.O));
     }
 
     @Test
-    void declare_player_X_winner_when_3_horizontal_top() throws NotPlayersTurn, AlreadyPlayedException {
+    void declare_player_X_winner_when_3_horizontal_top() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(0, 0), Player.X);
         game.play(new Coordinate(1, 0), Player.O);
@@ -110,7 +110,7 @@ public class TicTacToeShould {
     }
 
     @Test
-    void declare_player_O_winner_when_3_horizontal_top() throws NotPlayersTurn, AlreadyPlayedException {
+    void declare_player_O_winner_when_3_horizontal_top() throws NotPlayersTurn, AlreadyPlayed {
         TicTacToe game = new TicTacToe();
         game.play(new Coordinate(1, 0), Player.X);
         game.play(new Coordinate(0, 0), Player.O);
